@@ -1,0 +1,8 @@
+package it.ugolandini.drools;
+
+rule "First Drool rule"
+  when
+    $o: Object()
+  then
+    System.out.println("Rule Fired for Object:: "+$o.toString());
+end

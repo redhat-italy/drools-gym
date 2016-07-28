@@ -1,0 +1,79 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>it.ugolandini.drools</groupId>
+    <artifactId>drools-gym</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>drools-gym-parent</name>
+    <packaging>pom</packaging>
+
+    <url>http://ugolandini.com</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.plugin.version>3.3</maven.compiler.plugin.version>
+        <maven.resources.plugin.version>2.6</maven.resources.plugin.version>
+        <maven.war.plugin.version>2.6</maven.war.plugin.version>
+        <maven.jar.plugin.version>2.6</maven.jar.plugin.version>
+        <maven.surefire.plugin.version>2.19.1</maven.surefire.plugin.version>
+        <maven.dependency.plugin.version>2.10</maven.dependency.plugin.version>
+        <maven.exec.plugin.version>1.3.2</maven.exec.plugin.version>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <kie.version>6.4.0.Final</kie.version>
+
+        <junit.version>4.12</junit.version>
+        <cdi.version>1.2</cdi.version>
+        <weld.version>2.3.2.Final</weld.version>
+        <arquillian.weld.se.version>1.0.0.CR9</arquillian.weld.se.version>
+        <mockito.version>1.10.19</mockito.version>
+        <log4j.version>1.2.17</log4j.version>
+        <slf4j.version>1.7.12</slf4j.version>
+
+    </properties>
+
+    <modules>
+        <module>drools-gym-kjar</module>
+        <module>drools-gym-tests</module>
+        <module>drools-gym-model</module>
+        <module>drools-gym-example</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kie-api</artifactId>
+            <version>${kie.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-compiler</artifactId>
+            <version>${kie.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-core</artifactId>
+            <version>${kie.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
+            <version>${cdi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.weld.se</groupId>
+            <artifactId>weld-se-core</artifactId>
+            <version>${weld.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kie-ci</artifactId>
+            <version>${kie.version}</version>
+        </dependency>
+
+    </dependencies>
+
+</project>
