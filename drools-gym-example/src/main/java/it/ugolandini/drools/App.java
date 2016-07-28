@@ -1,5 +1,6 @@
 package it.ugolandini.drools;
 
+import it.ugolandini.drools.model.Customer;
 import org.jboss.weld.environment.se.Weld;
 import org.jboss.weld.environment.se.WeldContainer;
 import org.kie.api.cdi.KReleaseId;
@@ -16,11 +17,13 @@ public class App {
 
     private KieSession kSession;
 
-    public void bootstrapDrools() {
-        // The KieSession was injected so we can use it now
-        kSession.insert("Hi There!");
-        int rulesFired = kSession.fireAllRules();
-        System.out.println("Rules Fired: " + rulesFired);
+    public void runRules() {
+        Customer ugo = new Customer(1, "ugo", 46);
+        Customer andrea = new Customer(2, "andrea", 54);
+
+        kSession.insert(ugo);
+        kSession.insert(andrea);
+        System.out.println("Rules Fired: " + kSession.fireAllRules());
     }
 
     public static void main(String[] args) {
@@ -29,7 +32,7 @@ public class App {
 
         WeldContainer wc = w.initialize();
         App app = wc.instance().select(App.class).get();
-        app.bootstrapDrools();
+        app.runRules();
 
         w.shutdown();
     }

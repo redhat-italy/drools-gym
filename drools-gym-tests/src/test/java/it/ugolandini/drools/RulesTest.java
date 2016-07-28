@@ -1,5 +1,6 @@
 package it.ugolandini.drools;
 
+import it.ugolandini.drools.model.Customer;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
@@ -38,7 +39,19 @@ public class RulesTest {
     @Test
     public void hello() {
         Assert.assertNotNull(kSession);
-        kSession.insert("Hi There From Test!");
-        Assert.assertEquals(1, kSession.fireAllRules());
+        Customer ugo = new Customer(1, "ugo", 46);
+        Customer andrea = new Customer(2, "andrea", 54);
+
+        kSession.insert(ugo);
+        kSession.insert(andrea);
+
+        Assert.assertEquals(Customer.Category.NA, andrea.getCategory());
+        Assert.assertEquals(Customer.Category.NA, ugo.getCategory());
+
+        int rulesfired = kSession.fireAllRules();
+
+        Assert.assertEquals(Customer.Category.SILVER, andrea.getCategory());
+        Assert.assertEquals(Customer.Category.PLATINUM, ugo.getCategory());
+        Assert.assertEquals(2, rulesfired);
     }
 }

@@ -42,5 +42,11 @@
             <version>${arquillian.weld.se.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>it.ugolandini.drools</groupId>
+            <artifactId>drools-gym-model</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 </project>

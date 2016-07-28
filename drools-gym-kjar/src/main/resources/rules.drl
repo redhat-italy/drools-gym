@@ -1,8 +1,20 @@
-package it.ugolandini.drools;
+package it.ugolandini.drools.rules;
 
-rule "First Drool rule"
+import it.ugolandini.drools.model.Customer
+import it.ugolandini.drools.model.Customer.Category
+
+rule "Silver customer rule"
   when
-    $o: Object()
+    $c: Customer(age>50)
   then
-    System.out.println("Rule Fired for Object:: "+$o.toString());
+    $c.setCategory(Category.SILVER);
+    System.out.println($c.toString() + " is a Silver customer");
+end
+
+rule "Platinum customer rule"
+when
+    $c: Customer(age>18, name == "ugo")
+  then
+    $c.setCategory(Category.PLATINUM);
+    System.out.println($c.toString() + " is a Platinum customer");
 end
