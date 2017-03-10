@@ -1,0 +1,28 @@
+package it.ugolandini.drools.rules;
+
+import it.ugolandini.drools.model.Event
+import it.ugolandini.drools.model.BitmaskExample
+
+rule "Stupid rule 1"
+  when
+    $b: BitmaskExample(id>10)
+  then
+    $b.eventFired(Event.EVENT0);
+    System.out.println($b.toString() + " Stupid rule fired because id>10");
+end
+
+rule "Stupid rule 2"
+  when
+    $b: BitmaskExample(id>20)
+  then
+    $b.eventFired(Event.EVENT4);
+    System.out.println($b.toString() + " Stupid rule fired because id>20");
+end
+
+rule "Stupid rule 3"
+  when
+    $b: BitmaskExample(id>30)
+  then
+    $b.eventFired(Event.EVENT6);
+    System.out.println($b.toString() + " Stupid rule fired because id>30");
+end
